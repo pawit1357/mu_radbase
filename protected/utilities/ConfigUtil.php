@@ -5,8 +5,8 @@ class ConfigUtil {
 	private static $ApplicationCopyRight = '2012 &copy; กองกายภาพและสิ่งแวดล้อม มหาวิทยาลัยมหิดล ';
 	private static $ApplicationAddress = '';
 	private static $ApplicationUpdateVersion = '<li class="fa fa-clock-o"></li> &nbsp;Lasted Update 2016-03-20';
-	private static $AppName = '';	
-// 	private static $AppName = '/radbase';
+// 	private static $AppName = '';	
+	private static $AppName = '/radbase';
 	
 	private static $btnAddButton = 'เพิ่มข้อมูล';
 	private static $btnSaveButton = 'บันทึก';

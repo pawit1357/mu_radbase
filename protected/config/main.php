@@ -12,13 +12,13 @@ return array (
 				),
 				'db' => array (
 						'class' => 'CDbConnection',
-						'connectionString' => 'mysql:host=localhost;dbname=muraddb',
-// 						'connectionString' => 'mysql:host=mdc.mahidol;dbname=radbasewww',
+// 						'connectionString' => 'mysql:host=localhost;dbname=muraddb',
+						'connectionString' => 'mysql:host=mdc.mahidol;dbname=radbasewww',
 						'emulatePrepare' => true,
-						'username' => 'root',
-						'password' => 'P@ssw0rd',
-// 						'username' => 'radbasewww',
-// 						'password' => 'RadBase#2016#',
+// 						'username' => 'root',
+// 						'password' => 'P@ssw0rd',
+						'username' => 'radbasewww',
+						'password' => 'RadBase#2016#',
 						'charset' => 'utf8' 
 				),
 				'Smtpmail' => array (

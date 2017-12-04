@@ -40,8 +40,8 @@ $branchs = MBranch::model ()->findAll (); // รหัสประเภทก�
 								<tr>
 								<td class="center"><?php echo $counter;?></td>
 								<td class="center"><?php echo $data->name?></td>
-								<td class="center"><?php echo $data->code_usage->name?></td>
-								<td class="center"><?php echo $data->power_unit->name_en?></td>
+								<td class="center"><?php echo isset($data->code_usage->name)? $data->code_usage->name:''?></td>
+								<td class="center"><?php echo isset($data->power_unit->name_en)? $data->power_unit->name_en: ''?></td>
 								<td class="center"><?php echo CommonUtil::getBranchName($data->branch_group_id, $branchs) ?></td>
 								<td class="center"><?php echo $data->seq?></td>
 								<td class="center">

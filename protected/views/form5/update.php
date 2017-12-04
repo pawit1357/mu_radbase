@@ -174,7 +174,7 @@ $deps = MDepartment::model ()->findAll ( $criteriaDeps );
 								</select>
 							</div>
 							<a href="#modalHelp" class="mt-sweetalert mt-intalic"
-								data-toggle="modal">?</a>
+								data-toggle="modal">help</a>
 							<div id="divReq-types_of_radioactive_waste_id"></div>
 						</div>
 					</div>

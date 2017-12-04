@@ -68,7 +68,7 @@ $userRoles = UsersRole::model ()->findAll ();
 								class="required">*</span></label>
 							<div class="col-md-6">
 								<input id="password" type="password"
-									value="<?php echo $data->password;?>" class="form-control"
+									value="########" class="form-control"
 									name="UsersLogin[password]">
 							</div>
 							<div id="divReq-password"></div>
