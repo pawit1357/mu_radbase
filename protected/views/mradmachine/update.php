@@ -1,10 +1,10 @@
 <?php
-$branchs = MBranch::model ()->findAll (); // รหัสประเภทการใช้งาน
-$criCodeUsage = new CDbCriteria ();
+$branchs = MBranch::model()->findAll(); // รหัสประเภทการใช้งาน
+$criCodeUsage = new CDbCriteria();
 $criCodeUsage->condition = " is_rad_machine like '%1%' ";
 
-$code_usages = MCodeUsage::model ()->findAll ( $criCodeUsage ); // รหัสประเภทการใช้งาน
-$power_units = MPowerUnit::model ()->findAll (  ); // กำลัง/พลังงานสูงสุด
+$code_usages = MCodeUsage::model()->findAll($criCodeUsage); // รหัสประเภทการใช้งาน
+$power_units = MPowerUnit::model()->findAll(); // กำลัง/พลังงานสูงสุด
 ?>
 <form id="Form1" method="post" enctype="multipart/form-data"
 	class="form-horizontal">
@@ -78,7 +78,8 @@ $power_units = MPowerUnit::model ()->findAll (  ); // กำลัง/พลั�
 									name="MRadMachine[power_unit_id]" id="power_unit_id">
 									<option value="0">-- โปรดเลือก --</option>
 			<?php foreach($power_units as $item) {?>
-			<option value="<?php echo $item->id?>"  <?php echo $item->id == $data->power_unit_id ? 'selected="selected"' : ''?>><?php echo  $item->name_en?></option>
+			<option value="<?php echo $item->id?>"
+										<?php echo $item->id == $data->power_unit_id ? 'selected="selected"' : ''?>><?php echo  $item->name_en?></option>
 			<?php }?>
 			</select>
 
@@ -96,10 +97,12 @@ $power_units = MPowerUnit::model ()->findAll (  ); // กำลัง/พลั�
 							<div class="col-md-6">
 
 								<select class="form-control select2"
-									name="MRadMachine[code_usage_id]" id="code_usage_id">
+									name="MRadMachine[code_usage_id]" id="code_usage_id"
+									onchange="onchangeCodeUsage(this.value)">
 									<option value="0">-- โปรดเลือก --</option>
 			<?php foreach($code_usages as $item) {?>
-			<option value="<?php echo $item->id?>" <?php echo $item->id == $data->code_usage_id ? 'selected="selected"' : ''?>><?php echo sprintf('%02d', $item->code).'-'. $item->name?></option>
+			<option value="<?php echo $item->id?>"
+										<?php echo $item->id == $data->code_usage_id ? 'selected="selected"' : ''?>><?php echo sprintf('%02d', $item->code).'-'. $item->name?></option>
 			<?php }?>
 			</select>
 
@@ -109,6 +112,19 @@ $power_units = MPowerUnit::model ()->findAll (  ); // กำลัง/พลั�
 						</div>
 					</div>
 
+				</div>
+				<div class="row" id="div-code_usage_other">
+					<div class="col-md-10">
+						<div class="form-group">
+							<label class="control-label col-md-4">อื่น ๆ ระบุ: <span
+								class="required">*</span>
+							</label>
+							<div class="col-md-6">
+								<input id="code_usage_other" type="text"  value="<?php echo $data->code_usage_other;?>"
+									class="form-control" name="MRadMachine[code_usage_other]">
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-10">
@@ -160,13 +176,25 @@ $power_units = MPowerUnit::model ()->findAll (  ); // กำลัง/พลั�
 	<script>
 	var host = 'http://localhost:81/mu_rad';
     jQuery(document).ready(function () {
+        
 	    $('.grpOfInt').keypress(function (event) {
             return isNumber(event);
         });
+
+	    //init
+	    onchangeCodeUsage($('#code_usage_id').val());
+        
    	 $("#id").attr('maxlength','3');
 	 $("#name").attr('maxlength','200');
     	$( "#Form1" ).submit(function( event ) {
-        	
+
+ 		   var countBranch =  $('input[name="branch_group_id[]"]:checked').length;
+		   
+ 		  if(countBranch==0){
+     		  alert('โปรดระบุ (ประเภทการใช้งาน)');
+				return false;
+     	  }
+     	  
         	if($("#id").val().length==0){
         		$("#id").closest('.form-group').addClass('has-error');
         		$("#divReq-id").html("<span id=\"id-error\" class=\"help-block help-block-error\">This field is required.</span>");
@@ -188,6 +216,15 @@ $power_units = MPowerUnit::model ()->findAll (  ); // กำลัง/พลั�
         	this.submit();
     	});
     });
+
+    function onchangeCodeUsage($id){
+        if($id == 34){
+        	 $('#div-code_usage_other').show();
+        }else{
+        	$('#code_usage_other').val('');
+        	$('#div-code_usage_other').hide();
+        }
+    }
     
 //     function initDepartment(){
 //     	$.ajax({

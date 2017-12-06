@@ -33,7 +33,7 @@ class MRadMachine extends CActiveRecord
     {
         return array(
             array(
-                'id,name,seq,branch_group_id,code_usage_id,power_unit_id',
+                'id,name,seq,branch_group_id,code_usage_id,power_unit_id,code_usage_other',
                 'safe'
             )
         );
