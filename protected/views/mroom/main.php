@@ -41,7 +41,7 @@
 								<td class="center"><?php echo $data->number?></td>
 <td class="center"><?php echo $data->fac?></td>
 								<td class="center"><?php echo $data->building_id?></td>
-								<td class="center"><?php echo $data->floor?></td>
+								<td class="center"><?php echo (($data->floor <1)? 'ใต้ดินชั้น ' : '') .''. abs($data->floor)?></td>
 								<td class="center">
 									<?php if(isset($data->room_plan)){?>
 									<a title="Download" class="fa fa-download"
