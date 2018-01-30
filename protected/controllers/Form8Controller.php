@@ -23,28 +23,67 @@ class Form8Controller extends CController {
 			$this->redirect ( Yii::app ()->createUrl ( 'DashBoard/Permission' ) );
 		}
 	
-		$approve_status = addslashes ( $_GET ['approve_status'] );
-	
-		$model = $this->loadModel ();
-		$model->approve_status = $approve_status; // Delete
-		$model->update ();
-		$model = $this->loadModel ();
-		$model->approve_status = $approve_status; // Delete
-		$model->update ();
-		//---------------------------------------------
-		//MAIL APPROVED
-		//---------------------------------------------
-		$strSubject = "=?UTF-8?B?" . base64_encode ( ConfigUtil::getApplicationTitle() ) . "?=";
-		$approve ='';
-		switch($approve_status){
-			case UserLoginUtils::INIT_APPROVE:
-				$approve=UserLoginUtils::STAFF;
-				break;
-			case UserLoginUtils::STAFF_APPROVE:
-				$approve=UserLoginUtils::EXECUTIVE;
-				break;
+		$approve_status = addslashes($_GET['approve_status']);
+		
+		$model = $this->loadModel();
+		// check SI (approver)
+		$isISTask = false;
+		if ($approve_status == UserLoginUtils::EXECUTIVE_APPROVE) {
+		    
+		    $approverIndex = isset($model->approve_index) ? $model->approve_index : 1;
+		    
+		    $approver = new MApprover();
+		    $approver->approver_index = $approverIndex;
+		    $approver = $approver->searchByIndex($approverIndex);
+		    
+		    if (isset($approver)) {
+		        $isISTask = true;
+		        if ($approverIndex <= 2) { // SI approver has 3 person
+		            $model->approve_index = $approverIndex + 1;
+		        } else {
+		            $model->approve_status = $approve_status;
+		        }
+		    } else {
+		        $model->approve_status = $approve_status;
+		    }
+		}else{
+		    $model->approve_status = $approve_status;
+		}
+		$model->update();
+		
+		// ---------------------------------------------
+		// MAIL APPROVED
+		// ---------------------------------------------
+		$strSubject = "=?UTF-8?B?" . base64_encode(ConfigUtil::getApplicationTitle()) . "?=";
+		$approve = '';
+		$isISTaskStaffApproved = false;
+		switch ($approve_status) {
+		    case UserLoginUtils::INIT_APPROVE:
+		        $approve = UserLoginUtils::STAFF;
+		        break;
+		    case UserLoginUtils::STAFF_APPROVE:
+		        $approve = UserLoginUtils::EXECUTIVE;
+		        $isISTaskStaffApproved =true;
+		        break;
 		}
 		$Approver = UserLoginUtils::getApprover($approve);
+		
+		if ($isISTaskStaffApproved) {
+		    $approverSI = new MApprover();
+		    $approverSI->approver_index = 1;
+		    $approverSI = $approverSI->searchByIndex();
+		    if(isset($approverSI)) {
+		        $Approver = UsersLogin::model()->findbyPk($approverSI->user_id);
+		    }
+		}
+		if ($isISTask) {
+		    $approverSI = new MApprover();
+		    $approverSI->approver_index = $model->approve_index;
+		    $approverSI = $approverSI->searchByIndex();
+		    if(isset($approverSI)) {
+		        $Approver = UsersLogin::model()->findbyPk($approverSI->user_id);
+		    }
+		}
 		if (isset ( $Approver )) {
 			$detail = '  ( รายชื่อคณะกรรมการความปลอดภัยทางรังสี (ประจำส่วนงาน) ' . $model->name . ')  ';
 			$receiptNmae = 'คุณ' . $Approver->first_name . '  ' . $Approver->last_name;

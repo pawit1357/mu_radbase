@@ -88,7 +88,7 @@ class Form5 extends CActiveRecord {
 					update_by, 
 					update_date, 
 					revision,approve_status,
-					status,responsible_department_id',
+					status,responsible_department_id,approve_index',
 						'safe' 
 				) 
 		);

@@ -123,7 +123,7 @@ class Form1 extends CActiveRecord {
 						room_id,
 						delivery_date_year,delivery_date_month,delivery_date_day,
 						inspection_agency_id,inspection_agency_other,room_plan,
-						quality_check_date,file_path,usage_status_remark,power,power2,power_unit_id2,usage_status_remark,usage_status_to_department_id',
+						quality_check_date,file_path,usage_status_remark,power,power2,power_unit_id2,usage_status_remark,usage_status_to_department_id,approve_index',
 						'safe' 
 				) 
 		);

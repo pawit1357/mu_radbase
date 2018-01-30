@@ -55,7 +55,7 @@ class Form7 extends CActiveRecord {
 						revision,
 						owner_department_id,
 						status,approve_status,
-						update_from_id,rso_plan_file',
+						update_from_id,rso_plan_file,approve_index',
 						'safe' 
 				) 
 		);

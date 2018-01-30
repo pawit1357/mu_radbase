@@ -54,7 +54,7 @@ class Form8 extends CActiveRecord {
 						create_date,
 						create_by,
 						update_date,approve_status,
-						update_by,type,no_committee_reason',
+						update_by,type,no_committee_reason,approve_index',
 						'safe' 
 				) 
 		);

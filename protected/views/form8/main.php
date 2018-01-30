@@ -136,7 +136,7 @@ switch (UserLoginUtils::getUserRoleName ()) {
 		<a title="View" class="fa fa-search-minus"
 									href="<?php echo Yii::app()->CreateUrl('Form8/View/id/'.$data->id)?>"></a>
 		<?php
-					if ($data->approve_status == UserLoginUtils::STAFF_APPROVE) {
+		if ($data->approve_status == UserLoginUtils::STAFF_APPROVE && MApprover::isMyTask(UserLoginUtils::getUserInfo(),$data->approve_index)) {
 						?>		
 			<a title="Commit" onclick="return confirm('ยืนยันการบันทึกข้อมูล?')"
 									class="fa fa-paper-plane"

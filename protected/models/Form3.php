@@ -83,7 +83,7 @@ class Form3 extends CActiveRecord {
 							revision,
 							owner_department_id,
 							status,approve_status,
-							update_from_id,position_id,strength_radiation_unit_id,strength_radiation,check_date',
+							update_from_id,position_id,strength_radiation_unit_id,strength_radiation,check_date,approve_index',
 						'safe' 
 				) 
 		);

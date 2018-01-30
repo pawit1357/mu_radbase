@@ -735,7 +735,7 @@
 
 		
 	var host = 'http://radbase.mahidol/';
-// 	var host = 'http://myapps1357.com/radbase';
+// 	var host = 'http://localhost:81/radbase';
 	
 	function onchangeUsage($id){
 		switch($id){

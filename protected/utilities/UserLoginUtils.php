@@ -133,7 +133,7 @@ class UserLoginUtils {
 		if (self::isLogin ()) {
 			$UsersLogin = UsersLogin::model ()->findByPk ( self::getUsersLoginId () );
 // 			$branchs = MBranch::model ()->findAll ();
-			return "<i class=\"fa fa-user\"></i>" . $UsersLogin->first_name . "  " . $UsersLogin->last_name . " <i class=\"fa fa-key\"></i>(" .  strtolower ( $UsersLogin->users_role->variable_name )  . ") <i class=\"fa fa-university\"></i> สาขา " .$UsersLogin->department->branch_id. ' ภาควิชา ' .  $UsersLogin->department->name .' '. $UsersLogin->department->faculty->name . (isset($UsersLogin->branch_group->name)? '  (ด้าน' .$UsersLogin->branch_group->name.')':'') ; // .' ['.CommonUtil::getBranchName($UsersLogin->branch_group_id, $branchs).']';
+			return "<i class=\"fa fa-user\"></i>" . $UsersLogin->first_name . "  ". $UsersLogin->last_name . " <i class=\"fa fa-key\"></i>(" .  strtolower ( $UsersLogin->users_role->variable_name ).MApprover::getAproverInfo(self::getUsersLoginId())  . ") <i class=\"fa fa-university\"></i> สาขา " .$UsersLogin->department->branch_id. ' ภาควิชา ' .  $UsersLogin->department->name .' '. $UsersLogin->department->faculty->name . (isset($UsersLogin->branch_group->name)? '  (ด้าน' .$UsersLogin->branch_group->name.')':'') ; // .' ['.CommonUtil::getBranchName($UsersLogin->branch_group_id, $branchs).']';
 		} else {
 			return '';
 		}

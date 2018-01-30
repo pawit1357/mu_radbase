@@ -98,7 +98,7 @@ status,approve_status,
 update_from_id,accident_management,management_name,management_rso_license,
 management_position_id,
 management_phone,
-management_email,isReportCommander',
+management_email,isReportCommander,approve_index',
 						'safe' 
 				) 
 		);

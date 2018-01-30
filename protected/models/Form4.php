@@ -55,7 +55,7 @@ class Form4 extends CActiveRecord {
 						create_date,
 						update_by,
 						update_date,approve_status,
-						revesion,is_rso_staff,owner_department_id,description,file_path,is_rso_actual_work,rso_license_expire',
+						revesion,is_rso_staff,owner_department_id,description,file_path,is_rso_actual_work,rso_license_expire,approve_index',
 						'safe' 
 				) 
 		);

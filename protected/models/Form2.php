@@ -128,8 +128,8 @@ class Form2 extends CActiveRecord {
 						update_by, 
 						update_date,
 						owner_department_id, 
-						update_from_id, usage_status_to_remark,usage_status_to_department_id,approve_status
-						status',
+						update_from_id, usage_status_to_remark,usage_status_to_department_id,approve_status,
+						status,approve_index',
 						'safe' 
 				) 
 		);
