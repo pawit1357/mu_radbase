@@ -20,7 +20,8 @@ class Form1Controller extends CController
         if (! UserLoginUtils::authorizePage($_SERVER['REQUEST_URI'])) {
             $this->redirect(Yii::app()->createUrl('DashBoard/Permission'));
         }
-        
+   
+
         $model = new Form1();
         $this->render('//form1/main', array(
             'data' => $model
@@ -413,6 +414,13 @@ class Form1Controller extends CController
         ));
     }
 
+    public function actionTestMail(){
+        $strSubject = "=?UTF-8?B?" . base64_encode(ConfigUtil::getApplicationTitle()) . "?=";
+        $detail = 'ทดสอบส่งอีเมล์';
+        $receiptNmae = 'PAWIT';
+        MailUtil::sendMail ( 'pawit1357@hotmail.com', $strSubject, MailUtil::GetEmailContent ( $receiptNmae, $detail ) );
+    }
+    
     public function loadModel()
     {
         if ($this->_model === null) {

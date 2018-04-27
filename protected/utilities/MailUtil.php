@@ -5,7 +5,7 @@ class MailUtil {
 		
 // 		$mail = Yii::app ()->Smtpmail;
 // 		$mail->IsSMTP ();
-// 		$mail->SetFrom ( 'radbasenoti@gmail.com', 'MU-RADBASE' );
+// 		$mail->SetFrom ( 'pawitvaap@gmail.com', 'MU-RADBASE' );
 // 		$mail->Subject = $subject;
 // 		$mail->MsgHTML ( $content );
 // 		$mail->CharSet = "utf8";

@@ -55,7 +55,6 @@ License: You must have a valid license purchased only from themeforest(the above
 <link href="<?php echo ConfigUtil::getAppName();?>/assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
 
 <link href="<?php echo ConfigUtil::getAppName();?>/css/jquery-ui-1.11.4.custom.css" rel="stylesheet" type="text/css" />
-<!--  <link href="<?//php echo ConfigUtil::getAppName();?>/css/SpecialDateSheet.css" rel="stylesheet" type="text/css" /> -->
 
 <!-- END THEME LAYOUT STYLES -->
 <!-- <link rel="shortcut icon" href="favicon.ico" /> -->

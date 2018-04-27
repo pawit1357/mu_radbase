@@ -18,6 +18,7 @@ class DashBoardController extends CController {
 			$this->redirect ( Yii::app ()->createUrl ( 'Site/login' ) );
 		}
 		
+
 // 		if (isset ( $_POST ['answers_choice'] )) {
 			
 // 			$transaction = Yii::app ()->db->beginTransaction ();
